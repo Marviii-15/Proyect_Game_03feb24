@@ -1,8 +1,8 @@
-/* let playerState = 'fall';
+let playerState = 'fall';
 const dropdown = document.getElementById('animations');
 dropdown.addEventListener('change', function(e){
     playerState = e.target.value;
-}); */
+}); 
 
 const canvas  = document.getElementById('canvas1'); 
 const ctx = canvas.getContext('2d');
@@ -13,8 +13,8 @@ const playerImage = new Image();
 playerImage.src = 'shadow_dog.png';
 const spriteWidth = 575;
 const spriteHeight = 523;
-let playerState = 'fall';
-     
+
+
 let gameFrame = 0;
 const staggerFrames = 5;
 const spriteAnimations = [];
@@ -36,7 +36,7 @@ const animationStates = [
         frames: 9,
     },
     {
-        name: 'dissy',
+        name: 'dizzy',
         frames: 11,
     },
     {
@@ -56,7 +56,7 @@ const animationStates = [
         frames: 12,
     },
     {
-        name: 'getHit',
+        name: 'gethit',
         frames: 4,
     },
 ];
@@ -74,10 +74,10 @@ animationStates.forEach((state, index)=> {
 console.log(spriteAnimations);
 
 function animate(){
-    ctx.clearRect(0,0, CANVAS_WIDTH, CANVAS_HEIGHT);
+    ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     let position = Math.floor(gameFrame/staggerFrames) % spriteAnimations[playerState].loc.length;
     let frameX = spriteWidth * position;
-    let frameY = spriteAnimations[playerState].log[position].y;
+    let frameY = spriteAnimations[playerState].loc[position].y;
 
     ctx.drawImage(playerImage, frameX , frameY,spriteWidth,spriteHeight, 0, 0, spriteWidth, spriteHeight);
     
